@@ -18,9 +18,18 @@ router.get('/', function(req, resp, next) {
             console.log(err);
             return next(err);
         }
-        resp.json(user);
-    });
+        if(user){
+          resp.json(user);
+        } else {
+          var userObject = new user_model({
+              name: 'zeus-admin'
+          });
+          userObject.save().then((result) => {
+              resp.send(result);
+          });
+        }
+
+    })
 });
 
 module.exports = router;
-

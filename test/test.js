@@ -33,7 +33,7 @@ beforeEach((done) => {
 //     it('New simple user', function(done) {
 //         var userObject = new user({
 //             name: 'Yamil'
-//         }); 
+//         });
 //         expect(userObject.name).to.equal('Yamil');
 //         done();
 //     });
@@ -55,7 +55,7 @@ beforeEach((done) => {
 //             name: 'file.ext',
 //             logical_path: 'C:\\file.txt'
 //         });
-        
+
 //         var folderObject = new directory({
 //             name: 'folder A',
 //             childs: [fileObject]
@@ -66,49 +66,49 @@ beforeEach((done) => {
 //     })
 // });
 
-// describe('save data', function() {
+describe('save data', function() {
 
-//     it('Create user', function() {
-//         var userObject = new user({
-//             name: 'Yamil Test'
-//         }); 
-    
-//         userObject.save().then((result) => {
-//             expect(result).to.not.equal(null);
-//             return Promise.resolve();
-//         });
-        
-//     });
+    it('Create user', function() {
+        var userObject = new user({
+            name: 'Yamil Test'
+        });
 
-//     it('Create user_directory', function() {
-//         user.findOne({name: 'Yamil Test'}, function(err, userObject) {
-//             directoryObject = new directory({
-//                 name:'File A',
-//                 logical_path: '/usr/file.txt',
-//                 childs: null
-//             })
-            
-//             userDirectoryObject = new user_directory({
-//                 user: userObject._id,
-//                 directory: [{
-//                     name:'File A',
-//                     logical_path: '/usr/file.txt',
-//                     childs: null
-//                 }]
-//             });
-            
+        userObject.save().then((result) => {
+            expect(result).to.not.equal(null);
+            return Promise.resolve();
+        });
 
-//             userDirectoryObject.save().then((result) => {
-//                 expect(result).to.not.equal(null);
-//                 console.log(result);
-//                 mongoose.connection.close();
-//                 return Promise.resolve();
-//             });
+    });
 
-//         });
-        
-//     });
-// });
+    it('Create user_directory', function() {
+        user.findOne({name: 'Yamil Test'}, function(err, userObject) {
+            directoryObject = new directory({
+                name:'File A',
+                logical_path: '/usr/file.txt',
+                childs: null
+            })
+
+            userDirectoryObject = new user_directory({
+                user: userObject._id,
+                directory: [{
+                    name:'File A',
+                    logical_path: '/usr/file.txt',
+                    childs: null
+                }]
+            });
+
+
+            userDirectoryObject.save().then((result) => {
+                expect(result).to.not.equal(null);
+                console.log(result);
+                mongoose.connection.close();
+                return Promise.resolve();
+            });
+
+        });
+
+    });
+});
 
 // describe('get data', function() {
 
@@ -116,7 +116,7 @@ beforeEach((done) => {
 //         user.findOne({}, function(err, resp) {
 //             expect(resp.name).to.equal('Yamil Test');
 //             return Promise.resolve();
-//         });        
+//         });
 //     });
 
 //     it('user not found', function() {
@@ -124,8 +124,7 @@ beforeEach((done) => {
 //             expect(resp).to.equal(null);
 //             mongoose.connection.close();
 //             return Promise.resolve();
-//         });        
+//         });
 //     });
 
 // });
-

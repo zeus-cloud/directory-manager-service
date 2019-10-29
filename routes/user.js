@@ -1,6 +1,7 @@
 var router = require('express').Router();
 var mongoose = require('mongoose');
 var user_model = require('../models/user');
+var user_directory = require('../models/user_directory');
 
 router.get('/:id', function(req, resp, next) {
     user_model.findById(req.params.id, function(err, user) {
@@ -25,6 +26,11 @@ router.get('/', function(req, resp, next) {
               name: 'zeus-admin'
           });
           userObject.save().then((result) => {
+              userDirectoryObject = new user_directory({
+                  user: userObject._id,
+                  directory: []
+              });
+              userDirectoryObject.save();
               resp.send(result);
           });
         }

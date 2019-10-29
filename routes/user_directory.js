@@ -14,8 +14,8 @@ router.get('/:id', function(req, resp, next) {
     })
 });
 
-router.post('/', function(req, resp, next) {
-    user_directory_model.save(req.body, function(err, post) {
+router.put('/:id', function(req, resp, next) {
+    user_directory_model.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
         if(err) {
             console.log(err);
             return next(err);

@@ -6,7 +6,7 @@ var body_parser = require('body-parser');
 var user = require('./routes/user');
 var user_directory = require('./routes/user_directory');
 
-mongoose.connect('mongodb://10.30.129.174:27017/zeus', {useNewUrlParser:true, useUnifiedTopology: true });
+mongoose.connect('mongodb://172.19.0.30:27017/zeus', {useNewUrlParser:true, useUnifiedTopology: true });
 
 var app = express();
 app.use(body_parser.json());

@@ -5,7 +5,7 @@ var user_directory_model = require('../models/user_directory');
 
 router.get('/:id', function(req, resp, next) {
     console.log(req.params.id);
-    user_directory_model.find({user: req.params.id}, function(err, user_directories) {
+    user_directory_model.findOne({user: req.params.id}, function(err, user_directories) {
         if(err) {
             console.log(err);
             return next(err);
